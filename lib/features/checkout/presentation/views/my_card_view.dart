@@ -1,3 +1,5 @@
+import 'package:checkout_payment_ui/core/utils/styles.dart';
+import 'package:checkout_payment_ui/features/checkout/presentation/views/widgets/my_card_view_body.dart';
 import 'package:flutter/material.dart';
 
 class MyCardView extends StatelessWidget {
@@ -6,7 +8,21 @@ class MyCardView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(
+          'My Card',
+          style: Styles.font25BlackW500,
+        ),
+        elevation: 0,
+        leadingWidth: 70,
+        leading: Icon(
+          Icons.arrow_back_ios,
+          color: Colors.black,
+          size: 28,
+        ),
+      ),
+      body: MyCardViewBody(),
     );
   }
 }
