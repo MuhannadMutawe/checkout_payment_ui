@@ -1,4 +1,5 @@
 import 'package:checkout_payment_ui/core/widgets/app_elevated_button.dart';
+import 'package:checkout_payment_ui/features/checkout/presentation/views/payment_details_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/styles.dart';
@@ -9,7 +10,7 @@ class MyCardViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return SingleChildScrollView(
       padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 28),
       child: Column(
         children: [
@@ -48,7 +49,7 @@ class MyCardViewBody extends StatelessWidget {
           ),
           AppElevatedButton(
             label: 'Complete Payment',
-            onPressed: () {},
+            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PaymentDetailsView(),)),
           ),
         ],
       ),
