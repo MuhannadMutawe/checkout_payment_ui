@@ -1,3 +1,4 @@
+import 'package:checkout_payment_ui/features/checkout/presentation/views/widgets/payment_details_view_body.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/styles.dart';
@@ -8,13 +9,15 @@ class PaymentDetailsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
         title: Text(
           'Payment Details',
           style: Styles.font25BlackW500,
         ),
-        elevation: 0,
+        scrolledUnderElevation: 0,
+        backgroundColor: Colors.white,
         leadingWidth: 70,
         leading: GestureDetector(
           onTap: () => Navigator.pop(context),
@@ -25,6 +28,7 @@ class PaymentDetailsView extends StatelessWidget {
           ),
         ),
       ),
+      body: PaymentDetailsViewBody(),
     );
   }
 }

@@ -10,7 +10,7 @@ class MyCardViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return Padding(
       padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 28),
       child: Column(
         children: [
@@ -44,12 +44,13 @@ class MyCardViewBody extends StatelessWidget {
             titleStyle: Styles.font24BlackW500,
             subTitleStyle: Styles.font24BlackW500,
           ),
-          const SizedBox(
-            height: 25,
-          ),
-          AppElevatedButton(
-            label: 'Complete Payment',
-            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PaymentDetailsView(),)),
+          Spacer(),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 18.0),
+            child: AppElevatedButton(
+              label: 'Complete Payment',
+              onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PaymentDetailsView(),)),
+            ),
           ),
         ],
       ),
