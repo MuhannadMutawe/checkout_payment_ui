@@ -8,13 +8,15 @@ class MyCardView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
         title: Text(
           'My Card',
           style: Styles.font25BlackW500,
         ),
-        elevation: 0,
+        scrolledUnderElevation: 0,
+        backgroundColor: Colors.white,
         leadingWidth: 70,
         leading: Icon(
           Icons.arrow_back_ios,
