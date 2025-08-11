@@ -1,3 +1,4 @@
+import 'package:checkout_payment_ui/features/checkout/presentation/views/thank_you_view.dart';
 import 'package:checkout_payment_ui/features/checkout/presentation/views/widgets/payment_method_item.dart';
 import 'package:flutter/material.dart';
 
@@ -58,6 +59,11 @@ class _PaymentDetailsViewBodyState extends State<PaymentDetailsViewBody> {
                     if (formKey.currentState!.validate()) {
                       formKey.currentState!.save();
                     } else {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => ThankYouView(),
+                        ),
+                      );
                       setState(() {
                         autoValidateMode = AutovalidateMode.always;
                       });
