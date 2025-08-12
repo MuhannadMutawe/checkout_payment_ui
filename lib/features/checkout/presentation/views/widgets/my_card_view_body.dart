@@ -1,12 +1,19 @@
 import 'package:checkout_payment_ui/core/widgets/app_elevated_button.dart';
-import 'package:checkout_payment_ui/features/checkout/presentation/views/payment_details_view.dart';
+import 'package:checkout_payment_ui/features/checkout/presentation/views/widgets/payment_method_item.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/styles.dart';
 import 'order_info_item.dart';
 
-class MyCardViewBody extends StatelessWidget {
+class MyCardViewBody extends StatefulWidget {
   const MyCardViewBody({super.key});
+
+  @override
+  State<MyCardViewBody> createState() => _MyCardViewBodyState();
+}
+
+class _MyCardViewBodyState extends State<MyCardViewBody> {
+  int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +56,40 @@ class MyCardViewBody extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 18.0),
             child: AppElevatedButton(
               label: 'Complete Payment',
-              onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PaymentDetailsView(),)),
+              onPressed: () => showModalBottomSheet(
+                context: context,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadiusGeometry.circular(18),
+                ),
+                builder: (context) {
+                  return StatefulBuilder(
+                    builder: (context, setState) => SafeArea(
+                      child: Padding(
+                        padding: const EdgeInsets.all(18.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            PaymentMethodItems(
+                              currentIndex: currentIndex,
+                              onChangeIndex: (value) {
+                                setState(() {
+                                  currentIndex = value;
+                                });
+                              },
+                            ),
+                            SizedBox(
+                              height: 30,
+                            ),
+                            AppElevatedButton(label: 'Continue',onPressed: () {
+                              
+                            },),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
             ),
           ),
         ],
