@@ -7,10 +7,12 @@ class AppElevatedButton extends StatelessWidget {
     super.key,
     this.onPressed,
     required this.label,
+    this.isLoading = false,
   });
 
   final VoidCallback? onPressed;
   final String label;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -23,10 +25,14 @@ class AppElevatedButton extends StatelessWidget {
         ),
         minimumSize: Size(double.infinity, 65),
       ),
-      child: Text(
-        label,
-        style: Styles.font22BlackW500,
-      ),
+      child: isLoading
+          ? CircularProgressIndicator(
+              color: Colors.black,
+            )
+          : Text(
+              label,
+              style: Styles.font22BlackW500,
+            ),
     );
   }
 }
