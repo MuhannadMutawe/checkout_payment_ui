@@ -1,23 +1,12 @@
 import 'package:checkout_payment_ui/core/widgets/app_elevated_button.dart';
-import 'package:checkout_payment_ui/features/checkout/presentation/views/widgets/custom_button_bloc_consumer.dart';
-import 'package:checkout_payment_ui/features/checkout/presentation/views/widgets/payment_method_item.dart';
+import 'package:checkout_payment_ui/features/checkout/presentation/views/widgets/bottom_sheet_body.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/utils/styles.dart';
-import '../../../data/repos/checkout_repo_implement.dart';
-import '../../manger/payment_cubit.dart';
 import 'order_info_item.dart';
 
-class MyCardViewBody extends StatefulWidget {
+class MyCardViewBody extends StatelessWidget {
   const MyCardViewBody({super.key});
-
-  @override
-  State<MyCardViewBody> createState() => _MyCardViewBodyState();
-}
-
-class _MyCardViewBodyState extends State<MyCardViewBody> {
-  int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -97,34 +86,7 @@ class _MyCardViewBodyState extends State<MyCardViewBody> {
                       borderRadius: BorderRadiusGeometry.circular(18),
                     ),
                     builder: (context) {
-                      return BlocProvider(
-                        create: (context) =>
-                            PaymentCubit(CheckoutRepoImplement()),
-                        child: StatefulBuilder(
-                          builder: (context, setState) => SafeArea(
-                            child: Padding(
-                              padding: const EdgeInsets.all(18.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  PaymentMethodItems(
-                                    currentIndex: currentIndex,
-                                    onChangeIndex: (value) {
-                                      setState(() {
-                                        currentIndex = value;
-                                      });
-                                    },
-                                  ),
-                                  SizedBox(
-                                    height: 30,
-                                  ),
-                                  CustomButtonBlocConsumer(),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      );
+                      return BottomSheetBody();
                     },
                   ),
                 ),
