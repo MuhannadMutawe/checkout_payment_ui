@@ -31,39 +31,42 @@ class PaymentMethodItems extends StatelessWidget {
       children: List.generate(
         3,
         (index) {
-          return GestureDetector(
-            onTap: _changeValue(index),
-            child: AnimatedContainer(
-              height: 75,
-              duration: Duration(milliseconds: 500),
-              decoration: ShapeDecoration(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadiusGeometry.circular(15),
-                  side: BorderSide(
-                    width: 2,
-                    color: index == currentIndex
-                        ? Color(0XFF34A853)
-                        : Colors.black,
+          return Expanded(
+            child: GestureDetector(
+              onTap: _changeValue(index),
+              child: AnimatedContainer(
+                height: 75,
+                margin: EdgeInsets.symmetric(horizontal: 6),
+                duration: Duration(milliseconds: 500),
+                decoration: ShapeDecoration(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusGeometry.circular(15),
+                    side: BorderSide(
+                      width: 2,
+                      color: index == currentIndex
+                          ? Color(0XFF34A853)
+                          : Colors.black,
+                    ),
                   ),
+                  shadows: [
+                    BoxShadow(
+                      color: index == currentIndex
+                          ? Color(0XFF34A853)
+                          : Colors.transparent,
+                      blurRadius: 4,
+                      offset: Offset(0, 0),
+                      spreadRadius: 0,
+                    ),
+                  ],
                 ),
-                shadows: [
-                  BoxShadow(
-                    color: index == currentIndex
-                        ? Color(0XFF34A853)
-                        : Colors.transparent,
-                    blurRadius: 4,
-                    offset: Offset(0, 0),
-                    spreadRadius: 0,
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 24),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(15),
                   ),
-                ],
-              ),
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 28),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(15),
+                  child: SvgPicture.asset(_selectImage(index)),
                 ),
-                child: SvgPicture.asset(_selectImage(index)),
               ),
             ),
           );

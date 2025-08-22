@@ -72,6 +72,11 @@ class MyCardViewBody extends StatelessWidget {
               subTitleStyle: Styles.font24BlackW500,
             ),
           ),
+          SliverToBoxAdapter(
+            child: const SizedBox(
+              height: 20,
+            ),
+          ),
           SliverFillRemaining(
             hasScrollBody: false,
             child: Align(
